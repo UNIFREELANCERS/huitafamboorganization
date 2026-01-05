@@ -1,0 +1,151 @@
+/* Responsive, mobile-first styles for Huit Fambo site */
+:root{--hf-yellow:#f9d342;--hf-dark:#0a0a0a;--hf-light:#f7f5f2;--nav-bg:rgba(5,5,5,0.98);--nav-height:64px}
+*{box-sizing:border-box}
+html,body{height:100%}
+img,video{max-width:100%;height:auto;display:block}
+button{cursor:pointer}
+
+/* Base layout and typography (mobile-first) */
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;background:var(--hf-light);color:var(--hf-dark);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{line-height:1.15;margin:0 0 .5rem}
+p{margin:0 0 1rem}
+
+/* Header/nav base */
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:.6rem 1rem;min-height:var(--nav-height);background:var(--nav-bg);color:#fff;position:relative;z-index:1200;flex-wrap:wrap}
+.nav-brand{display:flex;align-items:center;gap:.6rem}
+
+/* Mobile & Tablet: hamburger navigation managed via index.html CSS */
+@media (max-width:1023px){
+  nav{position:relative; padding-right:3.5rem}
+  .hamburger{display:flex; position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); padding:0.5rem; z-index:1300; background:transparent; border-radius:6px}
+  .hamburger span{display:none}
+  .hamburger::before{content:'';display:inline-block;width:26px;height:26px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23f9d342' d='M6 3h12l-1.5 4H7.5L6 3zM7 8v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8H7z'/></svg>");background-size:contain;background-repeat:no-repeat;background-position:center;animation:smokeRemoval 2s ease-in-out infinite}
+  .hamburger:hover::before{transform:scale(1.06)}
+  .hamburger:focus{outline:3px solid rgba(249,211,66,0.4);outline-offset:2px;border-radius:6px}
+  .hamburger:focus::before{box-shadow:0 0 0 6px rgba(249,211,66,0.12);border-radius:4px}
+  .nav-drawer{top:calc(var(--nav-height,64px));right:0;width:75%;max-width:320px;border-left:2px solid var(--hf-yellow);box-shadow:-4px 0 12px rgba(0,0,0,0.3)}
+  .nav-links{display:none}
+}
+
+/* Newsletter section mobile styles */
+.newsletter-section{background:linear-gradient(135deg,rgba(10,10,10,0.92) 0%,rgba(10,10,10,0.88) 100%);border-top:3px solid var(--hf-yellow);border-bottom:3px solid var(--hf-yellow);padding:2.5rem 1.5rem;margin:3rem 0;text-align:center;position:relative;overflow:hidden}
+.newsletter-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(249,211,66,0.08) 0%,transparent 100%);pointer-events:none}
+.newsletter-section h3{font-size:1.4rem;margin-bottom:.8rem;color:var(--hf-yellow);font-weight:700;letter-spacing:.05em;position:relative;z-index:1}
+.newsletter-section p{font-size:.95rem;color:#e8e8e8;margin-bottom:1.5rem;position:relative;z-index:1;line-height:1.5}
+.newsletter-form{display:flex;flex-direction:column;gap:1rem;max-width:500px;margin:0 auto;position:relative;z-index:1}
+.newsletter-form input{padding:13px 16px;border:2px solid var(--hf-yellow);border-radius:8px;font-size:1rem;font-family:inherit;background:rgba(255,255,255,0.95);color:var(--hf-dark);transition:all .3s ease}
+.newsletter-form input::placeholder{color:#999}
+.newsletter-form input:focus{outline:none;border-color:var(--hf-yellow);background:#fff;box-shadow:0 0 0 3px rgba(249,211,66,0.2)}
+.newsletter-form button{padding:14px 24px;background:var(--hf-yellow);color:var(--hf-dark);border:none;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);letter-spacing:.05em;text-transform:uppercase}
+.newsletter-form button:hover{background:#f7c930;transform:translateY(-3px);box-shadow:0 8px 20px rgba(249,211,66,0.3)}
+.newsletter-form button:active{transform:translateY(-1px)}
+.newsletter-form button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+#newsletterMessage{position:relative;z-index:1;margin-top:1rem;font-size:.95rem;font-weight:600;border-radius:6px;padding:.8rem;animation:fadeInMessage .3s ease}
+
+/* Featured Newsletter Section - Unique Index.html Design */
+.newsletter-featured{background:linear-gradient(135deg,var(--hf-yellow) 0%,#f7c930 50%,var(--hf-yellow) 100%);padding:4rem 1.5rem;margin:4rem auto;max-width:90%;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(249,211,66,0.25)}
+.newsletter-featured::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="p" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="rgba(10,10,10,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23p)"/></svg>');opacity:.5}
+.newsletter-featured-content{position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center}
+.newsletter-icon{font-size:3.5rem;margin-bottom:1rem;display:inline-block;animation:bounceIcon 2s ease-in-out infinite}
+.newsletter-featured h2{font-size:2.2rem;margin:0 0 .8rem;color:var(--hf-dark);font-weight:700;letter-spacing:.02em;line-height:1.2}
+.newsletter-tagline{font-size:1.05rem;color:rgba(10,10,10,0.7);margin-bottom:2.5rem;line-height:1.6;font-weight:500}
+.newsletter-featured-form{position:relative;z-index:3}
+.form-group{display:flex;flex-direction:column;gap:.8rem;margin:0 auto 1.5rem;justify-content:center;align-items:center;max-width:600px}
+.form-group input{padding:16px 20px;border:none;border-radius:12px;font-size:1rem;font-family:inherit;background:#fff;color:var(--hf-dark);box-shadow:0 8px 20px rgba(0,0,0,0.12);transition:all .3s ease;width:100%;max-width:500px}
+.form-group input::placeholder{color:#999;font-weight:500}
+.form-group input:focus{outline:none;box-shadow:0 12px 28px rgba(0,0,0,0.18);transform:translateY(-2px)}
+.btn-subscribe{padding:16px 32px;background:var(--hf-dark);color:var(--hf-yellow);border:none;border-radius:12px;font-weight:700;font-size:1.05rem;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+.btn-subscribe:hover{background:var(--hf-dark);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.25)}
+.btn-subscribe:active{transform:translateY(-1px)}
+.btn-subscribe:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.btn-icon{font-size:1.3rem;transition:transform .3s ease}
+.btn-subscribe:hover .btn-icon{transform:translateX(4px)}
+.newsletter-message{margin-top:1.5rem;font-size:.95rem;font-weight:600;border-radius:10px;padding:1rem;animation:fadeInMessage .3s ease;color:var(--hf-dark)}
+.newsletter-message.success{background:rgba(34,197,94,0.2);color:#166534}
+.newsletter-message.error{background:rgba(239,68,68,0.2);color:#991b1b}
+.newsletter-privacy{font-size:.85rem;color:rgba(10,10,10,0.6);margin-top:.8rem;font-weight:500}
+.newsletter-featured-decoration{position:absolute;bottom:-20px;right:-20px;width:200px;height:200px;background:rgba(10,10,10,0.05);border-radius:50%;pointer-events:none}
+
+@keyframes bounceIcon{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* Desktop layout (>=1024px) - horizontal nav */
+@media (min-width:1024px){
+  .hamburger{display:none!important}
+  .nav-drawer{display:none!important}
+  .newsletter-form{flex-direction:row}
+  .newsletter-form input{flex:1}
+  .newsletter-form button{white-space:nowrap;flex-shrink:0}
+  .newsletter-featured{padding:6rem 3rem;margin:6rem 0;border-radius:20px}
+  .newsletter-icon{font-size:4.5rem}
+  .newsletter-featured h2{font-size:2.8rem;margin-bottom:1.2rem}
+  .newsletter-tagline{font-size:1.15rem;margin-bottom:3rem}
+  .form-group{flex-direction:row;gap:1.2rem;max-width:800px;margin-left:auto;margin-right:auto}
+  .form-group input{padding:18px 24px;font-size:1.05rem}
+  .btn-subscribe{padding:18px 40px;font-size:1.1rem}
+}
+
+/* Tablet specific adjustments (768px - 1023px): keep hamburger visible */
+@media (min-width:768px) and (max-width:1023px){
+  .hamburger{display:flex}
+  .newsletter-section{padding:3rem 2.5rem;margin:3.5rem 0}
+  .newsletter-section h3{font-size:1.5rem;margin-bottom:1rem}
+  .newsletter-form{max-width:700px}
+  .newsletter-featured{padding:5rem 2.5rem;margin:5rem auto;max-width:85%}
+  .newsletter-icon{font-size:4rem}
+  .newsletter-featured h2{font-size:2.5rem;margin-bottom:1rem}
+  .form-group{flex-direction:row;gap:1rem;align-items:center;justify-content:center}
+  .form-group input{width:auto;min-width:300px}
+}
+
+/* Accessibility focus */
+.nav-links a:focus{outline:3px solid rgba(249,211,66,0.4);outline-offset:2px;border-radius:6px}
+.hamburger:focus{outline:3px solid rgba(249,211,66,0.4);outline-offset:3px}
+
+/* Utilities */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* RTL support hook */
+.is-rtl nav, .is-rtl .nav-links{direction:rtl}
+
+/* Make sure banners, images and videos are fluid */
+img,video,iframe{max-width:100%;height:auto}
+
+/* Buttons touch-friendly */
+button, .btn{min-height:44px;min-width:44px;padding:.6rem 1rem;border-radius:8px;font-size:1rem}
+
+/* Small helpers for content scaling */
+@media (max-width:600px){
+  .hamburger{display:flex!important}
+  .nav-links{display:none!important}
+  h1{font-size:1.3rem}
+  h2{font-size:1.1rem}
+  h3{font-size:.95rem}
+}
+@media (min-width:768px){
+  h1{font-size:1.6rem}
+  h2{font-size:1.3rem}
+}
+@media (min-width:1024px){
+  h1{font-size:1.9rem}
+  h2{font-size:1.5rem}
+}
+
+/* Animation for newsletter messages */
+@keyframes fadeInMessage{
+  from{opacity:0;transform:translateY(-6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Smoke removal animation for bin icon */
+@keyframes smokeRemoval{
+  0%,100%{transform:translateY(0) scale(1);opacity:1}
+  25%{transform:translateY(-3px) scale(1.05)}
+  50%{transform:translateY(-5px) scale(1.08);opacity:0.85}
+  75%{transform:translateY(-3px) scale(1.05)}
+}
+
+/* Prevent horizontal scroll */
+html,body{overflow-x:hidden}
